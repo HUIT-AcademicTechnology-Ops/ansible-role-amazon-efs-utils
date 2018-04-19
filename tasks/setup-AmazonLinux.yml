@@ -1,0 +1,6 @@
+---
+- name: Ensure EFS utils is installed
+  package:
+    name: amazon-efs-utils
+    state: present
+  become: yes

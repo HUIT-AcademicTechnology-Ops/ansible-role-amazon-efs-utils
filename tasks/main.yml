@@ -1,0 +1,19 @@
+---
+# tasks file for amazon_efs_utils
+
+# Setup/install tasks.
+- include_tasks: setup-AmazonLinux.yml
+  when: ansible_distribution == 'Amazon'
+
+- include_tasks: setup-CentOS.yml
+  when: ansible_distribution in ['CentOS', 'RedHat']
+
+- include_tasks: setup-Debian.yml
+  when: ansible_distribution in ['Debian', 'Ubuntu']
+
+- name: Generate efs-utils.conf file
+  template:
+    src: efs-utils.conf.j2
+    dest: /etc/amazon/efs/efs-utils.conf
+  when: efs_utils_manage_config
+  become: yes

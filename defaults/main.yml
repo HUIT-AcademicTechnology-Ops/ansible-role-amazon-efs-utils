@@ -1,0 +1,24 @@
+---
+# defaults file for amazon efs utils role
+
+# Installation options:
+# ---
+efs_utils_download_source_url: https://github.com/aws/efs-utils/tarball/master
+# Default to the official Github source url for Amazon's EFS utils
+# library.   Use Github's tarball url to get the source code without
+# cloning.  There are currently no numbered versions in the official
+# Github repo so we default to master.
+efs_utils_download_local_path: /tmp
+# Where the unpacked tarball gets stored on the remote host
+efs_utils_manage_config: false
+# Don't override the base conf file by default
+
+# Configuration for efs-utils.conf
+# ---
+# Values represent the current defaults provided by Amazon in the conf file
+efs_utils_conf_logging_level: INFO
+efs_utils_conf_stunnel_debug_enabled: false
+efs_utils_conf_mount_watchdog_enabled: true
+efs_utils_conf_mount_watchdog_enabled_poll_interval_sec: 1
+efs_utils_conf_mount_watchdog_unmount_grace_period_sec: 30
+# Above are the current default values provided by Amazon in the conf file
