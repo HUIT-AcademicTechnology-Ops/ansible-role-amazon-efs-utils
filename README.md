@@ -1,6 +1,6 @@
 # Ansible Role: Amazon EFS Utils
 
-Ansible role that installs and configures the AWS EFS utils package on linux instances.   The instructions for building and installing are taken from the [official AWS Github repo | https://github.com/aws/efs-utils] of the library.
+Ansible role that installs and configures the AWS EFS utils package on linux instances.   The instructions for building and installing are taken from the [official AWS Github repo](https://github.com/aws/efs-utils) of the library.
 
 The actual mounting is left out of this role.  Note that there are some tasks that don't need `sudo` privileges while some do, so the ones that do are given the `become: yes` flag.
 
