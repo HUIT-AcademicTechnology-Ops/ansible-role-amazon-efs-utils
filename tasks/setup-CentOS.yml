@@ -1,0 +1,22 @@
+---
+- name: Install CentOS build dependencies
+  package:
+    name: rpm-build
+    state: present
+  become: yes
+
+- include_tasks: download-source.yml
+
+- name: build rpm package
+  shell: make rpm
+  args:
+    chdir: "{{ efs_utils_source_dir }}"
+    creates: build/amazon-efs-utils*rpm
+
+- name: install rpm package
+  shell: yum -y install ./build/amazon-efs-utils*rpm
+  args:
+    chdir: "{{ efs_utils_source_dir }}"
+  become: yes
+  register: efs_utils_pkg_install
+  changed_when: '"Unpacking amazon-efs-utils" in efs_utils_pkg_install.stdout'
